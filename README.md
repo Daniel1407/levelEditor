@@ -1,2 +1,2 @@
 # levelEditor
-Falta terminar la función donde se dibuja la cuadricula(min 25 del video)
+Terminada la cuadricula (min 28:24)

@@ -6,19 +6,18 @@ FPS = 60
 clock = pygame.time.Clock()
 
 #ventana
-SCREEN_WIDTH = 540
-SCREEN_HEIGTH = 400
-LOWER_MARGIN = 200
-SIDE_MARGIN = 100
+SCREEN_WIDTH = 400
+SCREEN_HEIGTH = 600
+SIDE_MARGIN = 200
 
-screen = pygame.display.set_mode((SCREEN_WIDTH + SIDE_MARGIN, SCREEN_HEIGTH + LOWER_MARGIN))
+screen = pygame.display.set_mode((SCREEN_WIDTH + SIDE_MARGIN, SCREEN_HEIGTH))
 pygame.display.set_caption('Level editor')
 
 
 #variables
-ROWS = 16
-MAX_COLS = 150
-TILE_SIZE = SCREEN_HEIGTH // ROWS
+COLS = 16
+MAX_ROWS = 150
+TILE_SIZE = SCREEN_WIDTH // COLS
 
 scroll_up = False
 scroll_down = False
@@ -27,12 +26,12 @@ scroll_speed = 1
 
 #colores
 GREEN = (144, 201, 120)
-RED = (255, 255, 255)
-WHITE = (200, 25, 25)
+WHITE = (255, 255, 255)
+RED = (200, 25, 25)
 
 #cargar imagenes
-background = pygame.image.load('img\\background\\bg.png').convert_alpha()
-particles = pygame.image.load('img\\background\\bg1.png').convert_alpha()
+background = pygame.image.load('img/background/bg.png').convert_alpha()
+particles = pygame.image.load('img/background/bg1.png').convert_alpha()
 
 #dibujar background
 def draw_bg():
@@ -44,9 +43,15 @@ def draw_bg():
 
 #dibujar cuadricula
 def draw_grid():
+    heigth = background.get_height()
+    width = background.get_width()
     #lineas verticales
-    for c in range(MAX_COLS+1):
-        pygame.draw.line(screen, WHITE, ())
+    for c in range(COLS + 1):
+        pygame.draw.line(screen, WHITE, (c * TILE_SIZE, 0), (c * TILE_SIZE, SCREEN_HEIGTH))
+    
+    #lineas horizontales
+    for c in range(MAX_ROWS + 1):
+        pygame.draw.line(screen, WHITE, (0, c * TILE_SIZE + scroll), (SCREEN_WIDTH, c * TILE_SIZE + scroll))
 
 run = True
 
@@ -55,6 +60,7 @@ while run:
     clock.tick(FPS)
 
     draw_bg()
+    draw_grid()
 
     #scroll
     if scroll_up == True:
