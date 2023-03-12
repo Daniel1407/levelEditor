@@ -110,9 +110,9 @@ while run:
 
     #scroll
     if scroll_up == True:
-        scroll += 5 * scroll_speed
+        scroll += 3 * scroll_speed
     if scroll_down == True and scroll > 0:
-        scroll -= 5 * scroll_speed
+        scroll -= 3 * scroll_speed
 
     pos = pygame.mouse.get_pos()
     x = pos[0] // TILE_SIZE
