@@ -9,8 +9,8 @@ clock = pygame.time.Clock()
 FPS = 60
 
 #ventana
-SCREEN_WIDTH = 400
-SCREEN_HEIGTH = 600
+SCREEN_WIDTH = 1200
+SCREEN_HEIGTH = 700
 SIDE_MARGIN = 300
 
 screen = pygame.display.set_mode((SCREEN_WIDTH + SIDE_MARGIN, SCREEN_HEIGTH))
@@ -18,8 +18,8 @@ pygame.display.set_caption('Level editor')
 
 
 #variables
-COLS = 16
-MAX_ROWS = 32
+COLS = 30
+MAX_ROWS = 35
 TILE_SIZE = SCREEN_WIDTH // COLS
 TILE_TYPES = 16
 level = 0
@@ -140,9 +140,9 @@ while run:
 
     #scroll
     if scroll_up == True and scroll > 0:
-        scroll -= 3 * scroll_speed
+        scroll -= 2 * scroll_speed
     if scroll_down == True and scroll < (MAX_ROWS * TILE_SIZE) - SCREEN_HEIGTH:
-        scroll += 3 * scroll_speed
+        scroll += 2 * scroll_speed
 
     pos = pygame.mouse.get_pos()
     x = pos[0] // TILE_SIZE
